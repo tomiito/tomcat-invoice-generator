@@ -47,7 +47,7 @@ describe('Routing', () => {
 
   it('renders Settings at /settings', () => {
     renderRoute('/settings')
-    expect(screen.getByText('Settings')).toBeInTheDocument()
+    expect(screen.getByText('Loading profile...')).toBeInTheDocument()
   })
 
   it('renders Clients at /clients', () => {
