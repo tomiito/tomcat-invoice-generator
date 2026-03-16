@@ -1,19 +1,13 @@
 import { describe, it, expect } from 'vitest'
+import './test/mocks/auth0'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
-import App from './App'
 import Dashboard from './pages/Dashboard'
 import CreateInvoice from './pages/CreateInvoice'
 import Settings from './pages/Settings'
 import Clients from './pages/Clients'
 import NotFound from './pages/NotFound'
-
-describe('App', () => {
-  it('renders without crashing', () => {
-    render(<App />)
-    expect(screen.getByText('Dashboard')).toBeInTheDocument()
-  })
-})
+import App from './App'
 
 function renderRoute(path: string) {
   return render(
@@ -28,6 +22,17 @@ function renderRoute(path: string) {
     </MemoryRouter>,
   )
 }
+
+describe('App', () => {
+  it('renders without crashing', () => {
+    render(<App />)
+    expect(
+      screen.getByRole('heading', { name: 'Dashboard' }),
+    ).toBeInTheDocument()
+    expect(screen.getByText('Invoice Generator')).toBeInTheDocument()
+    expect(screen.getByText('Logout')).toBeInTheDocument()
+  })
+})
 
 describe('Routing', () => {
   it('renders Dashboard at /', () => {
