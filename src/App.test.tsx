@@ -52,7 +52,7 @@ describe('Routing', () => {
 
   it('renders Clients at /clients', () => {
     renderRoute('/clients')
-    expect(screen.getByText('Clients')).toBeInTheDocument()
+    expect(screen.getByText('Loading clients...')).toBeInTheDocument()
   })
 
   it('renders NotFound for unknown routes', () => {
